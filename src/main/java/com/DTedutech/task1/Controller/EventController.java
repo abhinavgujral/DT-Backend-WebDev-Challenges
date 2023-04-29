@@ -2,20 +2,21 @@ package com.DTedutech.task1.Controller;
 
 import com.DTedutech.task1.Service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.DTedutech.task1.Entity.Event;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v3/app")
+
 public class EventController {
-    //private final List<Event> events = new ArrayList<>();
+
     private EventService eventService;
 
     @Autowired
@@ -26,14 +27,6 @@ public class EventController {
 
 
 
-
-
-    @GetMapping("/events")
-    public ResponseEntity<?> getEvents(@RequestParam Integer id){
-        Event event=eventService.getEventById( id);
-
-        return ResponseEntity.ok(event);
-    }
     /**
      *
      * @param type
@@ -42,13 +35,14 @@ public class EventController {
      * @return
      */
     @GetMapping("/events")
-    public ResponseEntity<?> getEvents(@RequestParam(required = false) String type,
+    public ResponseEntity<?> getEvents1(@RequestParam(required=false) Integer id,
+                                        @RequestParam(required = false) String type,
                                        @RequestParam(required = false,defaultValue = "5") int limit,
                                        @RequestParam(required = false,defaultValue = "1") int page) {
 
 
-            List<Event> events= eventService.getEvents(type,limit,page);
-
+           List<Event> events= eventService.getEvents(id,type,limit,page);
+        
             if (!events.isEmpty()) {
                 return ResponseEntity.ok(events);
             }

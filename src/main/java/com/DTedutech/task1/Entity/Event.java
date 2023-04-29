@@ -4,10 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,9 +14,11 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
+@NoArgsConstructor
 public class Event {
     @Id
     private Integer id;
+    private Integer type;
     private String name;
     private String tagline;
     private LocalDateTime schedule;
