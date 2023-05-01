@@ -35,10 +35,10 @@ public class EventController {
      * @return
      */
     @GetMapping("/events")
-    public ResponseEntity<?> getEvents1(@RequestParam(required=false) Integer id,
-                                        @RequestParam(required = false) String type,
-                                       @RequestParam(required = false,defaultValue = "5") int limit,
-                                       @RequestParam(required = false,defaultValue = "1") int page) {
+    public ResponseEntity<?> getEvents1(@RequestParam(name="id",required=false) Integer id,
+                                        @RequestParam(name="type",required = false) String type,
+                                       @RequestParam(name = "limit",required = false,defaultValue = "5") int limit,
+                                       @RequestParam(name="page",required = false,defaultValue = "1") int page) {
 
 
            List<Event> events= eventService.getEvents(id,type,limit,page);
@@ -49,6 +49,14 @@ public class EventController {
                 return ResponseEntity.notFound().build();
 
     }
+
+ @PostMapping("/events")
+public ResponseEntity<?> createEvent(@RequestBody Event event) {
+
+        Event createdEvent=eventService.createEvent(event);
+        return new ResponseEntity<>(createdEvent,HttpStatus.CREATED);
+
+ }
 
 
 

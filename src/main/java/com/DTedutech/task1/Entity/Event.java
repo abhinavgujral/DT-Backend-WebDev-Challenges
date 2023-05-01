@@ -18,7 +18,7 @@ import java.util.List;
 public class Event {
     @Id
     private Integer id;
-    private Integer type;
+    private String type;
     private String name;
     private String tagline;
     private LocalDateTime schedule;

@@ -45,4 +45,13 @@ public class EventService {
             return  new ArrayList<>(Arrays.asList(eventbyId.get()));
         }
     }
+
+    public Event createEvent(Event event) {
+
+        return eventDao.save(event);
+
+    }
+
+
+
 }
