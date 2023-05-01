@@ -60,4 +60,9 @@ public class EventService {
     }
 
 
+    public Event deleteEvent(Integer EventId) {
+        Event fetchedEvent= eventDao.findById(EventId).orElseThrow(()->new ResourceNotFoundExceptinon("Event not found"));
+         eventDao.deleteById(EventId);
+         return  fetchedEvent;
+    }
 }

@@ -64,5 +64,9 @@ public ResponseEntity<?> createEvent(@RequestBody Event event) {
     }
 
 
-
+    @DeleteMapping("/events/{id}")
+    public ResponseEntity<?> deleteEvent(@PathVariable Integer id) {
+     Event deletedEvent=   eventService.deleteEvent(id);
+        return new ResponseEntity<>(deletedEvent,HttpStatus.OK);
+    }
 }
