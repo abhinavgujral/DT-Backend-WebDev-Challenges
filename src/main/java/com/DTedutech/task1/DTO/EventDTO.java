@@ -1,20 +1,17 @@
-package com.DTedutech.task1.Entity;
+package com.DTedutech.task1.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.DTedutech.task1.Entity.File;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-
-@Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
-public class Event {
-    @Id
+@AllArgsConstructor
+@ToString
+public class EventDTO {
     private Integer id;
     private String type;
     private String name;
@@ -27,8 +24,4 @@ public class Event {
     private String category;
     private String subCategory;
     private int rigorRank;
-    private List<String> attendees;
-
-
-
 }
