@@ -54,10 +54,14 @@ public class EventController {
 public ResponseEntity<?> createEvent(@RequestBody Event event) {
 
         Event createdEvent=eventService.createEvent(event);
-        return new ResponseEntity<>(createdEvent,HttpStatus.CREATED);
+        return new ResponseEntity<>(createdEvent.getId(),HttpStatus.CREATED);
 
  }
-
+    @PutMapping("/events/{id}")
+    public ResponseEntity<?> updateEvent(@PathVariable Integer id, @RequestBody Event event) {
+       Event updatedEvent= eventService.updateEvent(id,event);
+        return new ResponseEntity<>(updatedEvent.getId(),HttpStatus.ACCEPTED);
+    }
 
 
 

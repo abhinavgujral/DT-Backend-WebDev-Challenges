@@ -4,6 +4,7 @@ import com.DTedutech.task1.Entity.Event;
 import com.DTedutech.task1.Exception.InsufficientResourceException;
 import com.DTedutech.task1.Exception.ResourceNotFoundExceptinon;
 import com.DTedutech.task1.Repository.EventDao;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,6 +53,11 @@ public class EventService {
 
     }
 
+
+    public Event updateEvent(Integer EventId, Event event) {
+        Event fetchedEvent= eventDao.findById(EventId).orElseThrow(()->new ResourceNotFoundExceptinon("Event not found"));
+        return eventDao.save(event);
+    }
 
 
 }
